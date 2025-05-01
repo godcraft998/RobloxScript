@@ -2012,6 +2012,10 @@ function DiscordLib:Window(text)
 		end
 		local ChannelHold = {}
 		function ChannelHold:Channel(text)
+			local ChannelContent = {
+				['text'] = text,
+				['update-text'] = text
+			}
 			local ChannelBtn = Instance.new("TextButton")
 			local ChannelBtnCorner = Instance.new("UICorner")
 			local ChannelBtnHashtag = Instance.new("TextLabel")
@@ -2110,7 +2114,7 @@ function DiscordLib:Window(text)
 					end
 					ServerFrame.Visible = true
 				end
-				ChannelTitle.Text = text
+				ChannelTitle.Text = ChannelContent['update-text']
 				ChannelBtn.BackgroundColor3 = Color3.fromRGB(57,60,67)
 				ChannelBtnTitle.TextColor3 = Color3.fromRGB(255,255,255)
 				currentchanneltoggled = ChannelBtn.Name
@@ -2124,7 +2128,7 @@ function DiscordLib:Window(text)
 				currentchanneltoggled = ChannelBtn.Name
 				ChannelHolder.Visible = true
 			end
-			local ChannelContent = {}
+
 			function ChannelContent:Button(text,callback)
 				local Button = Instance.new("TextButton")
 				local ButtonCorner = Instance.new("UICorner")
@@ -3237,8 +3241,8 @@ function DiscordLib:Window(text)
 				ChannelHolder.CanvasSize = UDim2.new(0,0,0,ChannelHolderLayout.AbsoluteContentSize.Y)
 			end
 			
-            function ChannelContent:ChangeTitle(text)
-                ChannelBtnTitle.Text = text
+            function ChannelContent:SetUpdateText(text)
+                ChannelHolder['update-text'] = text;
             end
 
 			return ChannelContent
