@@ -2290,13 +2290,6 @@ function DiscordLib:Window(text)
 				end)
 				
 				ChannelHolder.CanvasSize = UDim2.new(0,0,0,ChannelHolderLayout.AbsoluteContentSize.Y)
-
-                ToggleHolder = {};
-                function ToggleHolder:Update(text)
-                    ToggleTitle.Text = text
-                end
-
-                return ToggleHolder;
 			end
 			
 			function ChannelContent:Slider(text, min, max, start, callback)
@@ -3244,6 +3237,10 @@ function DiscordLib:Window(text)
 				ChannelHolder.CanvasSize = UDim2.new(0,0,0,ChannelHolderLayout.AbsoluteContentSize.Y)
 			end
 			
+            function ChannelContent:ChangeTitle(text)
+                ChannelBtnTitle.Text = text
+            end
+
 			return ChannelContent
 		end
 		
